@@ -7,7 +7,6 @@ import java.util.Optional;
 
 public interface CustumerService {
 
-    // Estos metodos abstratos se configuran en el contrato
     public Customer createCustomer();
     public Customer getCustomerById(int id);
     public Optional<Customer> getCustomerByEmail(String email);

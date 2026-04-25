@@ -2,7 +2,6 @@ package storeapp.domain;
 
 public class Category {
 
-
     private int idCategory;
     private String description;
     private boolean state;
@@ -14,6 +13,12 @@ public class Category {
     }
 
     public Category() {
+    }
+
+    // Método fundamental para que el producto muestre texto en lugar de direcciones de memoria
+    @Override
+    public String toString() {
+        return description + " (ID: " + idCategory + ")";
     }
 
     public int getIdCategory() {

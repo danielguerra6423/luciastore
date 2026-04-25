@@ -19,6 +19,8 @@ public class CustumerServiceImpl implements CustumerService {
 
     }
 
+
+
     @Override
     public Customer createCustomer() {
 
@@ -32,7 +34,7 @@ public class CustumerServiceImpl implements CustumerService {
         String name = sc.nextLine();
         customer.setName(name);
 
-        System.out.println("INgrese el apellido");
+        System.out.println("Ingrese el apellido");
         String lastName = sc.nextLine();
         customer.setLastName(lastName);
 
@@ -104,7 +106,7 @@ public class CustumerServiceImpl implements CustumerService {
 
             customerRepository.updateCustomer(id);
         }else{
-            System.out.println("Cliente  no encontrado");
+            System.out.println("❎ Cliente  no encontrado");
         }
 
 

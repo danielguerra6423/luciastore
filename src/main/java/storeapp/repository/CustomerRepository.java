@@ -1,7 +1,5 @@
 package storeapp.repository;
-
 import storeapp.domain.Customer;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,19 +32,16 @@ public class CustomerRepository {
 
 
     public Customer findCustomerById(int id){
-        System.out.println("repositorio" + id);
         try{
-        for(Customer customer: customers){
-            if(customer.getId() == id){
-                System.out.println(customer.getId() + " " + customer.getName() + " " + customer.getLastName() + " " + customer.getEmail() + " " + customer.getPassword() + " " + customer.isStatus() + " " + customer.getQuote() + " " + customer.getCustomerType());
+            for(Customer customer: customers){
+                if(customer.getId() == id){
+                    System.out.println(customer.getId() + " " + customer.getName() + " " + customer.getLastName() + " " + customer.getEmail() + " " + customer.getPassword() + " " + customer.isStatus() + " " + customer.getQuote() + " " + customer.getCustomerType());
+                }
+                return customer;
             }
-
-            return customer;
-        }
-
-        return null;
+            return null;
         }catch (Exception e){
-            System.out.println("Customer not found");
+            System.out.println("❎ Customer not found");
             return null;
         }
     }
@@ -76,8 +71,5 @@ public class CustomerRepository {
                 customers.remove(id);
             }
         }
-
     }
-
-
 }

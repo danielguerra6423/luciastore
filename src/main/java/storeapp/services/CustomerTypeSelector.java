@@ -9,7 +9,10 @@ public class CustomerTypeSelector {
 
         String value = "";
 
-        System.out.println("Seleccione 1. Nuevo 2. Antiguo 3. En mora");
+        System.out.println("Seleccione \n" +
+                "1. Nuevo \n" +
+                "2. Antiguo \n" +
+                "3. En mora");
 
         int option = CustomerFormValidation.validateInt("Opcion");
 
@@ -24,7 +27,7 @@ public class CustomerTypeSelector {
                 value = CustomerTypeEnum.BLOCKED.getDescription();
                 break;
             default:
-                System.out.println("Seleccione una Opción valida");
+                System.out.println("❎ Seleccione una Opción valida");
         }
 
         return value;

@@ -8,17 +8,12 @@ import storeapp.utils.CustomerFormValidation;
 public class CustomerView {
 
     private final CustumerService customerService;
-
-
     public CustomerView(CustumerService customerService){
         this.customerService = customerService;
     }
 
     public void createCustomer(){
-
         customerService.createCustomer();
-
-
     }
 
 
@@ -29,13 +24,12 @@ public class CustomerView {
 
 
     public void updateCustumer(){
-        System.out.println("Estoy en la Vista");
         customerService.updateCustomer(CustomerFormValidation.validateInt("Ingrese el ID"));
 
     }
 
     public void deleteCustomer(){
-        customerService.deleteCustomer(CustomerFormValidation.validateInt("Ingrese el id del CLiente a eliminar"));
+        customerService.deleteCustomer(CustomerFormValidation.validateInt("Ingrese el id del Cliente a eliminar"));
     }
 
 

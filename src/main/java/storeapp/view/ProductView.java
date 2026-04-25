@@ -1,42 +1,35 @@
 package storeapp.view;
 
-import storeapp.domain.Category;
-import storeapp.domain.Product;
-import storeapp.services.StateSelector;
+import storeapp.services.ProductService;
+import storeapp.utils.ProductFormValidation;
 
-import java.util.Scanner;
+import static java.lang.System.*;
 
 public class ProductView {
 
-    Scanner scanner = new Scanner(System.in);
-    StateSelector stateSelector = new StateSelector();
-    Category category = new Category();
-
-
-    public Product createProduct(Product product){
-        System.out.println("Creating product...");
-        System.out.println("Ingrese el id del priducto");
-        int id = scanner.nextInt();
-        scanner.nextLine();
-        product.setIdProduct(id);
-        System.out.println("Ingrese el nombre del producto");
-        String name = scanner.nextLine();
-        product.setDescription(name);
-        System.out.println("Ingrese el precio del producto");
-        double price = scanner.nextDouble();
-        product.setPrice(price);
-        System.out.println("Ingrese la cantidad del producto");
-        int stock = scanner.nextInt();
-        product.setStock(stock);
-        System.out.println("INgrese el estado del producto");
-        boolean status = stateSelector.ProductState();
-        product.setState(status);
-        System.out.println("Ingrese el id de la categoria del producto");
-        product.setCategory(category);
-
-        return product;
+    private final ProductService productService;
+    public ProductView(ProductService productService) {
+        this.productService = productService;
     }
 
+    public  void createProduct(){
+        productService.createProduct();
+    }
 
-
+    public void getProductById(int id){
+        productService.getProductById(id);
+    }
+    public void getProductById() {
+        productService.getProductById(ProductFormValidation.validateInt("Ingrese el ID del producto a buscar"));
+    }
+    public void getAllProducts() {
+        System.out.println("--- Lista de Productos ---");
+        productService.getAllProducts().forEach(System.out::println);
+    }
+    public void updateProduct(){
+        productService.updateProduct(ProductFormValidation.validateInt("Ingrese el ID del producto a actualizar"));
+    }
+    public void deleteProduct() {
+        productService.deleteProduct(ProductFormValidation.validateInt("Ingrese el id del producto a eliminar"));
+    }
 }
