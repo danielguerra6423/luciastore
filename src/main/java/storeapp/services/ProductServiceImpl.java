@@ -51,7 +51,7 @@ public class ProductServiceImpl implements ProductService {
         } while (stock < 0);
         product.setStock(stock);
 
-        product.setState(ProductFormValidation.validateProductState("Ingrese el estado del producto (true/false):"));
+        product.setState(ProductStateSelector.selectProductState("Seleccione el estado del producto:"));
 
         // 5. VINCULACIÓN OBLIGATORIA (Cumple requisito: Categoría debe existir)
         while (true) {
@@ -115,7 +115,7 @@ public class ProductServiceImpl implements ProductService {
                     product.setStock(ProductFormValidation.validateInt("Ingrese nuevo stock:"));
                     break;
                 case 5:
-                    product.setState(ProductFormValidation.validateProductState("Ingrese nuevo estado (true/false):"));
+                    product.setState(ProductStateSelector.selectProductState("Seleccione el nuevo estado del producto:"));
                     break;
                 case 6:
                     // Validación también en la actualización

@@ -2,7 +2,7 @@ package storeapp.services;
 
 import storeapp.domain.Category;
 import storeapp.repository.CategoryRepository;
-import storeapp.utils.ProductFormValidation; // Importamos el validador
+import storeapp.utils.CategoryFormValidation;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class CategoryServiceImpl implements CategoryService {
 
         // 1. Validar ID
         while (true) {
-            int id = ProductFormValidation.validateInt("Ingrese el ID de la categoría:");
+            int id = CategoryFormValidation.validateInt("Ingrese el ID de la categoría:");
             if (categoryRepository.findCategoryById(id) == null) {
                 category.setIdCategory(id);
                 break;
@@ -29,7 +29,7 @@ public class CategoryServiceImpl implements CategoryService {
 
         // 2. Validar Descripción (No vacía) y Unicidad de Nombre
         while (true) {
-            String desc = ProductFormValidation.validateString("Ingrese la descripción de la categoría:");
+            String desc = CategoryFormValidation.validateString("Ingrese la descripción de la categoría:");
 
             // Comprobar si el nombre ya existe en la lista
             boolean nameExists = false;
@@ -47,10 +47,9 @@ public class CategoryServiceImpl implements CategoryService {
             System.out.println("❌ Error: Ya existe una categoría llamada '" + desc + "'.");
         }
 
-        // 3. Validar Estado
-        category.setState(ProductFormValidation.validateProductState("Ingrese el estado (true/false):"));
+        // 3. Validar Estado por selector enum
+        category.setState(CategoryStateSelector.selectCategoryState("Seleccione el estado de la categoría:"));
 
-        System.out.println("✅ Categoría creada exitosamente.");
         return categoryRepository.saveCategory(category);
     }
 
